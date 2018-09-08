@@ -9,4 +9,11 @@
     <string name="register">Register</string>
     <string name="login_in_progress">Logging in...</string>
     <string name="no_email_pw">Please fill in both the username and password fields</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="full_name">Full name</string>
+    <string name="contact_num">Contact number</string>
+    <string name="hard_hearing">Hard of hearing</string>
+    <string name="caregiver">Caregiver</string>
+
 </resources>

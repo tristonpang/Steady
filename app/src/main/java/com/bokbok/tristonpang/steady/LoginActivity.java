@@ -48,12 +48,8 @@ public class LoginActivity extends AppCompatActivity {
      * to the RegisterActivity.
      */
     public void register(View v) {
-        //TODO: RegisterActivity
-        /*
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-        finish();
         startActivity(intent);
-        */
     }
 
     /**
