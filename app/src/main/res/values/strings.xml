@@ -15,5 +15,6 @@
     <string name="contact_num">Contact number</string>
     <string name="hard_hearing">Hard of hearing</string>
     <string name="caregiver">Caregiver</string>
+    <string name="validate_text">Please ensure that all fields are filled in properly</string>
 
 </resources>

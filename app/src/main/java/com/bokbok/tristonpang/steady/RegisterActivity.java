@@ -16,21 +16,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.UUID;
+
 public class RegisterActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-    }
-
-    /*
 
     private FirebaseAuth mAuth;
 
@@ -38,7 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPasswordView;
     private EditText mConfirmPasswordView;
     private AutoCompleteTextView mNameView;
-    private String mRC;
     private EditText mContactNumView;
     private DatabaseReference mDatabaseReference;
     private Boolean mIsDeaf;
@@ -62,18 +56,21 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onRadioButtonClicked(View view) {
         // Check if button is checked
+        Log.d("Steady", "onRadioButtonClicked()");
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.radioDeaf:
-                if (checked)
+                if (checked) {
                     mIsDeaf = true;
                     break;
+                }
             case R.id.radioCare:
-                if (checked)
+                if (checked) {
                     mIsDeaf = false;
                     break;
+                }
         }
     }
 
@@ -85,11 +82,11 @@ public class RegisterActivity extends AppCompatActivity {
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        if (isEmailValid() && isPasswordValid() && isRCValid() && isNumValid()) { //begin registration attempt
+        if (isEmailValid() && isPasswordValid() && isNumValid() && isRadioButtonValid()) { //begin registration attempt
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    Log.d("InTheLoop", "attemptRegistration() onComplete Success: + " + task.isSuccessful());
+                    Log.d("Steady", "attemptRegistration() onComplete Success: + " + task.isSuccessful());
                     if (!task.isSuccessful()) {
                         //error dialog
                         showErrorDialog("Registration failed");
@@ -110,28 +107,26 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isEmailValid() {
         boolean result = mEmailView.getText().toString().contains("@");
-        Log.d("InTheLoop", "isEmailValid(): " + result);
+        Log.d("Steady", "isEmailValid(): " + result);
         return result;
     }
+
     private boolean isPasswordValid() {
         String password = mPasswordView.getText().toString();
         boolean result = password.length() >= 6
                 && mConfirmPasswordView.getText().toString().equals(password);
-        Log.d("InTheLoop", "isPasswordValid(): " + result);
+        Log.d("Steady", "isPasswordValid(): " + result);
         return result;
     }
-    private boolean isRCValid() {
-        boolean result = !mRC.equals("Select a Residential College");
-        Log.d("InTheLoop", "isRCValid(): " + result);
-        return result;
-    }
+
     private boolean isNumValid() {
         boolean result = mContactNumView.getText().toString().length() == 8;
-        Log.d("InTheLoop", "isNumValid(): " + result);
+        Log.d("Steady", "isNumValid(): " + result);
         return result;
     }
 
     private boolean isRadioButtonValid() {
+        Log.d("Steady", "isRadioButtonValid(): " + (mIsDeaf != null));
         return mIsDeaf != null;
     }
 
@@ -145,19 +140,23 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void addNewUserToDatabase() {
+        String id = UUID.randomUUID().toString();
         String name = mNameView.getText().toString();
-        String rc = mRC;
         String contactNum = mContactNumView.getText().toString();
         String email = mEmailView.getText().toString();
 
-        UserData newUser = new UserData(name, rc, contactNum, email);
+        User newUser = new User(id, name, contactNum, email, null, null, null, null, mIsDeaf);
 
         //database paths cannot have . so we replace with -
         email = email.replace(".","-");
 
         //email forms the directory path that store the user data
-        mDatabaseReference.child("users").child(email).setValue(newUser);
+        mDatabaseReference.child("users").child(id).setValue(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("Steady", "New user successfully added to database");
+            }
+        });
     }
 
-    */
 }

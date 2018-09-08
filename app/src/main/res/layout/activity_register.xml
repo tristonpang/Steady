@@ -103,7 +103,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/hard_hearing"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="onRadioButtonClicked"/>
 
             <RadioButton
                 android:id="@+id/radioCare"
@@ -113,7 +114,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/caregiver"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="onRadioButtonClicked"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -125,7 +127,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-
+        android:onClick="registerNewUser"
         android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
