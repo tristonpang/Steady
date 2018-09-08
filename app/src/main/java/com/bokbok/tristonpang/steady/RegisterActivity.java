@@ -92,7 +92,8 @@ public class RegisterActivity extends AppCompatActivity {
                         showErrorDialog("Registration failed");
                     } else {
                         //store user info into database
-                        addNewUserToDatabase();
+                        String id = mAuth.getCurrentUser().getUid();
+                        addNewUserToDatabase(id);
 
                         //switch back to LoginActivity
                         finish();
@@ -139,8 +140,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void addNewUserToDatabase() {
-        String id = UUID.randomUUID().toString();
+    private void addNewUserToDatabase(String id) {
         String name = mNameView.getText().toString();
         String contactNum = mContactNumView.getText().toString();
         String email = mEmailView.getText().toString();

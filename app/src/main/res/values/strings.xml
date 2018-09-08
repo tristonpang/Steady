@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Steady</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_search">Search Bar</string>
+    <string name="title_browse">Browse</string>
+    <string name="title_schedule">Schedule</string>
+    <string name="title_more">More</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="sign_in">Sign-in</string>
@@ -16,5 +17,7 @@
     <string name="hard_hearing">Hard of hearing</string>
     <string name="caregiver">Caregiver</string>
     <string name="validate_text">Please ensure that all fields are filled in properly</string>
+    <string name="search_welcome">How can we help?</string>
+    <string name="search_greeting">Hi %1$s</string>
 
 </resources>
