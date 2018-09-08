@@ -6,6 +6,9 @@ public class User {
     String socialService;
     String payment;
 
+    public User() {
+    }
+
     public User(String health, String family, String socialService, String payment) {
         this.health = health;
         this.family = family;

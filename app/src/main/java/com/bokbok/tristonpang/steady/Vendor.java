@@ -9,6 +9,10 @@ public class Vendor {
     String name;
     List<String> services;
 
+    public Vendor() {
+    }
+
+
     public Vendor(double rating, HashMap<String, Integer> price, String name, List<String> services) {
         this.rating = rating;
         this.price = price;
@@ -48,3 +52,5 @@ public class Vendor {
         this.services = services;
     }
 }
+
+
