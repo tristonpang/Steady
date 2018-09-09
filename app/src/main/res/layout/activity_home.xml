@@ -30,13 +30,14 @@
         android:layout_height="0dp"
         android:layout_marginBottom="2dp"
         android:ems="10"
+        android:gravity="top"
+        android:hint="Type here!"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:background="@android:color/darker_gray"
-        android:gravity="top" />
+        tools:background="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/searchWelcomeText"
@@ -53,9 +54,9 @@
         android:id="@+id/searchGreetingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/search_greeting"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/searchWelcomeText"
         app:layout_constraintStart_toStartOf="parent" />
 
