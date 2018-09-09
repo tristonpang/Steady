@@ -19,5 +19,6 @@
     <string name="validate_text">Please ensure that all fields are filled in properly</string>
     <string name="search_welcome">How can we help?</string>
     <string name="search_greeting">Hi %1$s</string>
+    <string name="title_activity_service_detail">ServiceDetailActivity</string>
 
 </resources>

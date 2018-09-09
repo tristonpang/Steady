@@ -19,7 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SearchResultsActivity" />
+        <activity
+            android:name=".ServiceDetailActivity"
+            android:label="@string/title_activity_service_detail"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

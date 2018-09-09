@@ -1,18 +1,17 @@
 package com.bokbok.tristonpang.steady;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Vendor {
     private String id;
     private double rating;
-    private HashMap<String, Integer> price;
+    private HashMap<String, String> price;
     private String name;
 
     public Vendor() {
     }
 
-    public Vendor(String id, double rating, HashMap<String, Integer> price, String name) {
+    public Vendor(String id, double rating, HashMap<String, String> price, String name) {
         this.id = id;
         this.rating = rating;
         this.price = price;
@@ -27,7 +26,7 @@ public class Vendor {
         return rating;
     }
 
-    public HashMap<String, Integer> getPrice() {
+    public HashMap<String, String> getPrice() {
         return price;
     }
 

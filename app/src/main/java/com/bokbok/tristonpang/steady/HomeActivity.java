@@ -1,5 +1,6 @@
 package com.bokbok.tristonpang.steady;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,7 +28,6 @@ import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private String mName;
     private DatabaseReference mGeneralRef;
     private TextView mGreetView;
@@ -38,13 +40,10 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_search:
-                    mTextMessage.setText(R.string.title_search);
                     return true;
                 case R.id.navigation_browse:
-                    mTextMessage.setText(R.string.title_browse);
                     return true;
                 case R.id.navigation_schedule:
-                    mTextMessage.setText(R.string.title_schedule);
                     return true;
                 case R.id.navigation_more:
                     return true;
@@ -59,9 +58,26 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mSearchView = findViewById(R.id.searchEditText);
         mSearchView.setBackgroundColor(R.color.colorPrimaryDark);
+        mSearchView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            attemptSearch();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
+
         mGreetView = findViewById(R.id.searchGreetingView);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
@@ -84,6 +100,11 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    private void attemptSearch() {
+        Intent intent = new Intent(HomeActivity.this, SearchResultsActivity.class);
+        intent.putExtra("searchQuery", mSearchView.getText().toString());
+        startActivity(intent);
+    }
 
 
 }
